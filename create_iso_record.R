@@ -13,9 +13,10 @@ library(datapack)
 library(digest)
 library(uuid)
 
-nodes = list()
-nodes[["PROD"]] <- "urn:node:knb"
-nodes[["SANDBOX"]] <- "urn:node:mnSandboxUCSB1"
+nodes <- list(
+  PROD="urn:node:KNB",
+  SANDBOX="urn:node:mnSandboxUCSB1"
+)
 
 args <- commandArgs(trailingOnly=TRUE)
 if (length(args) != 2 || !(args[1] %in% c("PROD", "SANDBOX"))) {

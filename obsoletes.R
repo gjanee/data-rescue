@@ -12,9 +12,10 @@
 
 library(dataone)
 
-nodes = list()
-nodes[["PROD"]] <- "urn:node:knb"
-nodes[["SANDBOX"]] <- "urn:node:mnSandboxUCSB1"
+nodes <- list(
+  PROD="urn:node:KNB",
+  SANDBOX="urn:node:mnSandboxUCSB1"
+)
 
 args <- commandArgs(trailingOnly=TRUE)
 if (length(args) != 3 || !(args[1] %in% c("PROD", "SANDBOX"))) {
