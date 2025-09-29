@@ -23,11 +23,11 @@ Data rescue scripts and workflow. Currently one fairly narrow use case is suppor
     -   Authentication
         -   In the DataONE UI, under My profile \> Settings \> Authentication Token, obtain either a bare token (for `curl`) or a bare token wrapped in an R code snippet. Note that tokens don't last long.
         -   `curl -H "Authentication: Bearer $TOKEN"`
-        -   For R, (re)place the code snippet in the `TOKENS` file in this repository, which is loaded by `.Rprofile.`
+        -   For R, (re)place the code snippet in the `TOKENS` file in this repository, which is loaded by `.Rprofile`.
 
 ## Metadata
 
-From DataONE's perspective, an uploaded XML file is a freestanding "science metadata object." There need not be attached data, but the metadata can point to where to obtain the data. For DataONE to make the metadata discoverable (and not be an opaque, binary blob) it must have one of a few accepted formats.
+From DataONE's perspective, an uploaded XML file is a freestanding "science metadata object." This metadata object can point to where the data can be downloaded; it need not be attached to any data objects in DataONE. For DataONE to make the metadata discoverable (and not be an opaque, binary blob) it must have one of a few accepted formats.
 
 -   [DataONE object format list](https://cn.dataone.org/cn/v2/formats)
     -   See entries of type METADATA for supported science metadata formats.
@@ -40,7 +40,7 @@ The [NOAA ISO metadata workbook](https://www.ncei.noaa.gov/sites/default/files/2
 Datasets are made available via FTP courtesy of [GRIT](https://grit.ucsb.edu).
 
 -   Home directory: `/home/datarescue`
--   Corresponding FTP URL: <ftp://ftp.grit.ucsb.edu/pub/org/library/datarescue> (log in as guest)
+-   Corresponding FTP URL: `ftp://ftp.grit.ucsb.edu/pub/org/library/datarescue` (log in as guest)
     -   Implication: the entire `home/datarescue` directory tree is visible via FTP, so be careful about what gets put in there.
 -   Access from butter.grit.ucsb.edu.
 -   Need to watch file permissions as file ownership is wonky. Make sure that all directories and files are group-writable and are owned by group `library`.
@@ -65,9 +65,9 @@ The general idea is to obtain an existing ISO 19115/19139 XML record for the dat
 
     -   Prepend to the abstract: [This is an archived copy of a dataset originally hosted at URL. Dataset captured MONTH YEAR by UCSB Library Research Data Services.] ...
 
-    -   Set the download URL. This is tricky, as the metadata may contain multiple download options, and there are multiple places where download options may be placed. See the appendix below.
+    -   Set the download URL. This is tricky, as the metadata may contain multiple download options, and there are multiple places where download options may be recorded. See the appendix below.
 
-4.  Upload the revised metadata using `create_iso_record.R` again, and hold on to the new PID.
+4.  Upload the revised metadata to the sandbox KNB node using `create_iso_record.R` again, and hold on to the new PID.
 
 5.  Effectively remove the old metadata by obsoleting it using `obsoletes.R`. (Data and metadata cannot be modified in DataONE; one can only mark that a new object obsoletes a previous object. An obsoleted object is for most purposes invisible.)
 
@@ -86,7 +86,7 @@ Some additional scripts:
 
 Setting the download URL is tricky. One approach is to add a (or append to an existing) `gmd:transferOptions` block, which sits at the end of the `gmd:MD_Distribution` block. In the example below, note that there are multiple fields to be filled in.
 
-```         
+```
 </gmd:distributionInfo>
   </gmd:MD_Distribution>
     ...
