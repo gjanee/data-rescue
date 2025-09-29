@@ -101,10 +101,10 @@ Setting the download URL is tricky. One approach is to add a (or append to an ex
               <gmd:URL>ftp://ftp.grit.ucsb.edu/pub/org/library/datarescue/...</gmd:URL>
             </gmd:linkage>
             <gmd:name>
-              <gco:CharacterString>ZIP archive</gco:CharacterString>
+              <gco:CharacterString>Archived data download site</gco:CharacterString>
             </gmd:name>
             <gmd:description>
-              <gco:CharacterString>ZIP archive</gco:CharacterString>
+              <gco:CharacterString>Archived data download site</gco:CharacterString>
             </gmd:description>
             <gmd:function>
               <gmd:CI_OnLineFunctionCode codeList="https://www.ngdc.noaa.gov/metadata/published/xsd/schema/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="download">download</gmd:CI_OnLineFunctionCode>
