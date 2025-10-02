@@ -21,9 +21,9 @@ Data rescue scripts and workflow. Currently one fairly narrow use case is suppor
         -   N.B.: If using `curl` commands, ignore the Content-Type header given in the examples and use the default instead (multipart/form-data).
     -   [`dataone` R package](https://github.com/DataONEorg/rdataone), which is what the scripts in this repository use.
     -   Authentication
-        -   In the DataONE UI, under My profile \> Settings \> Authentication Token, obtain either a bare token (for `curl`) or a bare token wrapped in an R code snippet. Note that tokens don't last long.
+        -   In the DataONE UI, under My profile \> Settings \> Authentication Token, obtain either a bare token (for `curl`) or a bare token wrapped in an R code snippet. Note that tokens don't last long, on the order of a day.
         -   `curl -H "Authentication: Bearer $TOKEN"`
-        -   For R, (re)place the code snippet in the `TOKENS` file in this repository, which is loaded by `.Rprofile`.
+        -   For R, (re)place the code snippet in the `TOKENS` file in this repository, which is loaded by `.Rprofile`. Note that the KNB sandbox and production nodes use different tokens with different names (`dataone_test_token` vs `dataone_token`). Both can be stored in `TOKENS`.
 
 ## Metadata
 
